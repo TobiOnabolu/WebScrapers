@@ -12,7 +12,7 @@ BOT_NAME = 'WikiScraper'
 SPIDER_MODULES = ['WikiScraper.spiders']
 NEWSPIDER_MODULE = 'WikiScraper.spiders'
 
-CLOSESPIDER_PAGECOUNT = 10
+CLOSESPIDER_PAGECOUNT = 50
 
 FEED_URI = 'articles.csv'
 FEED_FORMAT = 'csv'
@@ -67,9 +67,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'WikiScraper.pipelines.WikiscraperPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'WikiScraper.pipelines.WikiscraperPipeline': 100
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

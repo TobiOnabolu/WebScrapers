@@ -19,4 +19,5 @@ class WikiscraperItem(scrapy.Item):
     lastupdated = scrapy.Field()
     name = scrapy.Field()
     key = scrapy.Field()
+    league = scrapy.Field()
 

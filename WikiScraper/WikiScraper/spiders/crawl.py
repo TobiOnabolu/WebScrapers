@@ -8,7 +8,7 @@ from WikiScraper.items import WikiscraperItem
 class CrawlSpider(CrawlSpider):
     name = 'crawl'
     allowed_domains = ['en.wikipedia.org']
-    start_urls = ['http://en.wikipedia.org/wiki/LeBron_James']
+    start_urls = ['https://en.wikipedia.org/wiki/National_Basketball_Association']
     key = 0
 
     #create a list of rules for the crawler to follow
@@ -30,9 +30,14 @@ class CrawlSpider(CrawlSpider):
         #since we are using item object we will be returning that after we populate its properties
         self.key += 1
 
+
+        #TODO Find a way to make it only collect NBA players.., i tried with collecting league but that still collects other stuff
+        #TODO Find a way to collect N records after pipelines have been applied
+        
         item['key'] = self.key
         item['url'] = response.url
         item['name'] = response.xpath('//h1[@id="firstHeading"]/text()').get()
         item['lastupdated'] = response.xpath('//li[@id="footer-info-lastmod"]/text()').get()
+        item['league'] = response.xpath('//a[@href="/wiki/National_Basketball_Association"]/text()').get()
 
         return item
